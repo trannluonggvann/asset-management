@@ -69,6 +69,18 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('assignments.*') ? 'active' : '' }}" href="{{ route('assignments.index') }}">
+                                <i class="fas fa-handshake me-2"></i>
+                                Cấp phát tài sản
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('incidents.*') ? 'active' : '' }}" href="{{ route('incidents.index') }}">
+                                <i class="fas fa-exclamation-triangle me-2"></i>
+                                Báo cáo sự cố
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('qr.*') ? 'active' : '' }}" href="{{ route('qr.scan') }}">
                                 <i class="fas fa-qrcode me-2"></i>
                                 Quét QR Code
@@ -76,9 +88,15 @@
                         </li>
                         @if(auth()->user()->canManageAssets())
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link {{ request()->routeIs('employees.*') ? 'active' : '' }}" href="{{ route('employees.index') }}">
                                 <i class="fas fa-users me-2"></i>
                                 Nhân viên
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('departments.*') ? 'active' : '' }}" href="{{ route('departments.index') }}">
+                                <i class="fas fa-building me-2"></i>
+                                Bộ phận
                             </a>
                         </li>
                         <li class="nav-item">

@@ -124,10 +124,22 @@ class AssetController extends Controller
 
     public function showQR(Asset $asset)
     {
+        // Generate QR code with the required URL format
+        $qrUrl = 'https://qlts.livespo.vn/' . strtolower($asset->asset_code);
+        
         $qrCode = QrCode::size(300)
             ->format('svg')
-            ->generate(route('assets.show', $asset));
+            ->generate($qrUrl);
             
         return view('assets.qr', compact('asset', 'qrCode'));
+    }
+
+    public function showAssetByQR($asset_code)
+    {
+        $asset = Asset::where('asset_code', $asset_code)
+            ->with(['category', 'currentAssignment.employee.department'])
+            ->firstOrFail();
+            
+        return view('assets.qr-info', compact('asset'));
     }
 }

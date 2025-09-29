@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title', 200);
             $table->text('message');
-            $table->enum('type', ['info', 'warning', 'error', 'success'])->default('info');
+            $table->enum('type', ['info', 'warning', 'error', 'success', 'incident'])->default('info');
             $table->foreignId('user_id')->nullable()->constrained('users');
             $table->boolean('is_read')->default(false);
             $table->timestamp('read_at')->nullable();
